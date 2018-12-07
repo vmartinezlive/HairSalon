@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+<!-- <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp1.1</TargetFramework>
@@ -12,4 +12,4 @@
   <ItemGroup>
     <ProjectReference Include="..\HairSalon\HairSalon.csproj" />
   </ItemGroup>
-</Project>
+</Project> -->
