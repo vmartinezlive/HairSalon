@@ -73,4 +73,69 @@ Input:
 stylistOne: ("Vicky", "Tanvi" 1)
 stylistTwo: ("Bob", 'Michael" 2)
 Output: List<Bottle>{}
-#### 
+### Spec: Test that ClearAll() clears database
+**Example:**
+Input:
+stylistOne: ("Vicky", "Tanvi" 1)
+Output: List<stylistOne>{}
+### Spec: Test that Save() saves to database
+**Example:**
+Input:
+stylistOne: ("Vicky", "Tanvi" 1)
+stylistTwo: ("Bob", 'Michael" 2)
+Output: List<Stylist>{stylistOne, stylistTwo}
+##### Spec: Stylist returns a list of all Stylist
+**Example:**
+Input:
+stylistOne: ("Vicky", "Tanvi" 1)
+stylistTwo: ("Bob", 'Michael" 2)
+Output: List<Stylist>{stylistOne, stylistTwo}
+
+
+
+
+
+### Client Model
+#### Spec 1: Client return Client
+**Example**
+Input: "Vicky"
+Output: "Vicky"
+##### Spec 2: Client returns Client id
+**Example:**
+Input:  Client: Vicky ID: 1
+Output: 1
+##### Spec: Client returns Client name
+**Example:**
+Input:  "Vicky"
+Output: "Vicky"
+##### Spec: Client returns stylist name
+**Example:**
+Input:  Clients / Stylist: "Tanvi / Vicky"
+Output: "Tanvi / Vicky"
+##### Spec: Client returns client id
+**Example:**
+Input:  Clients & ID: "Tanvi, 1"
+Output: 1
+##### Spec: Client returns empty list
+**Example:**
+Input:
+ClientOne: ("Vicky", "Tanvi" 1)
+ClientTwo: ("Bob", 'Michael" 2)
+Output: List<Bottle>{}
+### Spec: Test that ClearAll() clears database
+**Example:**
+Input:
+ClientOne: ("Vicky", "Tanvi" 1)
+Output: List<ClientOne>{}
+### Spec: Test that Save() saves to database
+**Example:**
+Input:
+ClientOne: ("Vicky", "Tanvi" 1)
+ClientTwo: ("Bob", 'Michael" 2)
+Output: List<Client>{ClientOne, ClientTwo}
+##### Spec: Client returns a list of all Client
+**Example:**
+Input:
+ClientOne: ("Vicky", "Tanvi" 1)
+ClientTwo: ("Bob", 'Michael" 2)
+Output: List<Client>{ClientOne, ClientTwo}
