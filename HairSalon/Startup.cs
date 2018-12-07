@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using HairSalon.Models;
 
 namespace HairSalon
 {
@@ -26,7 +27,7 @@ namespace HairSalon
 
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-      app.UseDeveloperExceptionPage();
+      // app.UseDeveloperExceptionPage();
       app.UseMvc(routes =>
       {
           routes.MapRoute(
@@ -34,7 +35,7 @@ namespace HairSalon
               template: "{controller=Home}/{action=Index}/{id?}");
       });
 
-      app.UseStaticFiles();
+      // app.UseStaticFiles();
 
       app.Run(async (context) =>
       {
