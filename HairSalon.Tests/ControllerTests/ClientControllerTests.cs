@@ -4,7 +4,7 @@
 // using System;
 // using HairSalon.Models;
 //
-// namespace Vinter.Tests
+// namespace ClientTest.Tests
 // {
 //   [TestClass]
 //   public class ClientTest : IDisposable

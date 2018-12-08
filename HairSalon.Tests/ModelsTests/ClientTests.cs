@@ -47,5 +47,41 @@ namespace HairSalon.Tests
 
       Assert.AreEqual(expectedName, actualName);
     }
+
+    [TestMethod]
+    public void GetStylist_ReturnsStylist_String()
+    {
+      string expectedStylist = "Tanvi";
+      Client newClient = new Client("Vicky", expectedStylist, 1, 1);
+
+      string actualStylist = newClient.GetStylist();
+
+      Assert.AreEqual(expectedStylist, actualStylist);
+    }
+
+    [TestMethod]
+    public void GetStylistlId_ReturnsId_Int()
+    {
+      int expectedStylistlId = 1;
+      Client newClient = new Client("Vicky", "Tanvi",expectedStylistlId, 1);
+
+      int actualStylistlId = newClient.GetStylistlId();
+
+      Assert.AreEqual(expectedStylistlId, actualStylistlId);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_ItemList()
+    {
+      //Arrange
+      List<Client> expectedClientList = new List<Client> { };
+
+      //Act
+      List<Client> actualClientList = Client.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(expectedClientList, actualClientList);
+    }
+
  }
 }
