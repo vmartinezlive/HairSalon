@@ -9,14 +9,14 @@ namespace HairSalon.Tests
   [TestClass]
   public class ClientTest
   {
-    public void Dispose()
-    {
-        // Client.ClearAll();
-    }
+    // public void Dispose() : IDiposable
+    // {
+    //     Client.ClearAll();
+    // }
 
     public ClientTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vinter_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hairsalon_test;";
     }
 
     [TestMethod]
@@ -60,14 +60,14 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void GetStylistlId_ReturnsId_Int()
+    public void GetStylistId_ReturnsId_Int()
     {
-      int expectedStylistlId = 1;
-      Client newClient = new Client("Vicky", "Tanvi",expectedStylistlId, 1);
+      int expectedStylistId = 1;
+      Client newClient = new Client("Vicky", "Tanvi",expectedStylistId, 1);
 
-      int actualStylistlId = newClient.GetStylistlId();
+      int actualStylistId = newClient.GetStylistId();
 
-      Assert.AreEqual(expectedStylistlId, actualStylistlId);
+      Assert.AreEqual(expectedStylistId, actualStylistId);
     }
 
     [TestMethod]
@@ -82,6 +82,23 @@ namespace HairSalon.Tests
       //Assert
       CollectionAssert.AreEqual(expectedClientList, actualClientList);
     }
+
+    // [TestMethod]
+    // public void Save_SavesToDatabase_ClientList()
+    // {
+    //   //Arrange
+    //   Client newClient = new Client("Vicky", "Tanvi", 1, 1);
+    //   List<Client> expectedClientList = new List<Client>{newClient};
+    //
+    //   //Act
+    //   newClient.Save();
+    //   List<Client> actualClientList = Client.GetAll();
+    //
+    //   Console.WriteLine(expectedClientList[0].GetName());
+    //   Console.WriteLine(actualClientList[0].GetName());
+    //   //Assert
+    //   CollectionAssert.AreEqual(expectedClientList, actualClientList);
+    // }
 
  }
 }

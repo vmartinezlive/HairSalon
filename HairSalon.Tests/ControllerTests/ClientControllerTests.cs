@@ -11,7 +11,7 @@
 //   {
 //     public void Dispose()
 //     {
-//         // Bottle.ClearAll();
+//         // Client.ClearAll();
 //     }
 //
 //   }
