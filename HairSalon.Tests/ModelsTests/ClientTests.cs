@@ -9,10 +9,10 @@ namespace HairSalon.Tests
   [TestClass]
   public class ClientTest
   {
-    // public void Dispose() : IDiposable
-    // {
-    //     Client.ClearAll();
-    // }
+    public void Dispose()
+    {
+        Client.ClearAll();
+    }
 
     public ClientTest()
     {
@@ -99,6 +99,22 @@ namespace HairSalon.Tests
     //   //Assert
     //   CollectionAssert.AreEqual(expectedClientList, actualClientList);
     // }
+
+    [TestMethod]
+  public void GetAll_ReturnsClient_List()
+  {
+    //Arrange
+    Client clientOne = new Client("Vicky", "Stylist", 1, 1);
+    Client clientTwo = new Client("Bob", "Chris", 2, 2);
+    List<Client> expectedClientList = new List<Client> { clientOne, clientTwo };
+
+    //Act
+    List<Client> actualClientList = Client.GetAll();
+
+    //Assert
+    CollectionAssert.AreEqual(expectedClientList, actualClientList);
+  }
+
 
  }
 }

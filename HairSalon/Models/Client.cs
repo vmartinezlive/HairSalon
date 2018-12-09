@@ -54,6 +54,24 @@ namespace HairSalon.Models
       }
     }
 
+    // public override bool Equals(System.Object otherClient)
+    // {
+    //   if (!(otherClient is Client))
+    //   {
+    //     return false;
+    //   }
+    //   else
+    //   {
+    //     Client newClient = (Client) otherClient;
+    //     bool idEquality = (this.GetId() == newClient.GetId());
+    //     bool nameEquality = (this.GetName() == newClient.GetName());
+    //     bool stylistEquality = (this.GetStylist() == newClient.GetStylist());
+    //     bool stylistIdEquality = this.GetStylistId() == newClient.GetStylistId();
+    //     return (idEquality && nameEquality && stylistEquality && stylistIdEquality);
+    //     //fail the Equals test by not adding the Equals method
+    //   }
+    // }
+
     public static List<Client> GetAll()
     {
       // Client newClient = new Client("anystring", "clientName", "ClientStylist", ClientStylistId, ClientId);
@@ -116,10 +134,13 @@ namespace HairSalon.Models
     //   {
     //     conn.Dispose();
     //   }
-      //To fail Saves to database method - declare method and keep it empty
-      //To fail Save AssignsId test -
-      //do not add the "_id = (int) cmd.LastInsertedId;" line
+      // To fail Saves to database method - declare method and keep it empty
+      // To fail Save AssignsId test -
+      // do not add the "_id = (int) cmd.LastInsertedId;" line
     // }
+
+
+
 
   }
 }
