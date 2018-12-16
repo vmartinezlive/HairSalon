@@ -48,7 +48,7 @@ Open the cloned directory from your terminal.
 
 #### To launch MySQL servers:
 * Access MySQL executing the command mysql -uroot -proot in the terminal.
-Accessing phpMyAdmin with MAMP
+ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vicky_martinez;"
 
 * Ensure the MAMP server is running. Launch MAMP and check the Apache Server and MySQL Sever checkboxes in the upper-left corner of the MAMP window. If checked, they're running. If they're not checked, click Start Servers to launch.
 * After servers are running, click Open start page in the MAMP window.
@@ -56,12 +56,13 @@ This will take us to the MAMP startup page in the browser at localhost:8888/MAMP
 * Select the Tools menu from the top navbar of this page. Then select phpMyAdmin from the resulting drop-down.
 * This will open phpMyAdmin in a new browser window or tab.
 
+
 #### Sql Stylist Sql
 Server: localhost:8889 Database: vicky_martinez
 * stylist
-CREATE TABLE `vicky_martinez`.`stylist` ( `id` INT NULL , `name` VARCHAR(255) NOT NULL , `client` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `victoria_martinez`.`stylist` ( `id` INT NULL , `name` VARCHAR(255) NOT NULL , `client` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
 * client
-CREATE TABLE `vicky_martinez`.`client` ( `id` INT NULL , `name` VARCHAR(255) NOT NULL , `stylist` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
+CREATE TABLE `victoria_martinez`.`client` ( `id` INT NULL , `name` VARCHAR(255) NOT NULL , `stylist` VARCHAR(255) NOT NULL ) ENGINE = InnoDB;
 
 #### Exporting Database from MAMP
 * Start MAMP servers and click Open WebStart page in the MAMP window.
