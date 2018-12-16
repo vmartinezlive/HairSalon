@@ -16,7 +16,7 @@ namespace HairSalon.Tests
 
     public ClientTest()
     {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=hairsalon_test;";
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vicky_martinez_test;";
     }
 
     [TestMethod]
@@ -26,62 +26,62 @@ namespace HairSalon.Tests
       Assert.AreEqual(typeof(Client), newClient.GetType());
     }
 
-    [TestMethod]
-    public void GetId_ReturnsId_Int()
-    {
-      int expectedId = 1;
-      Client newClient = new Client("Vicky", "Tanvi", 1, expectedId);
+    // [TestMethod]
+    // public void GetId_ReturnsId_Int()
+    // {
+    //   int expectedId = 1;
+    //   Client newClient = new Client("Vicky", "Tanvi", 1, expectedId);
+    //
+    //   int actualId = newClient.GetId();
+    //
+    //   Assert.AreEqual(expectedId, actualId);
+    // }
+    //
+    // [TestMethod]
+    // public void GetName_ReturnsName_String()
+    // {
+    //   string expectedName = "Vicky";
+    //   Client newClient = new Client(expectedName, "Tanvi", 1, 1);
+    //
+    //   string actualName = newClient.GetName();
+    //
+    //   Assert.AreEqual(expectedName, actualName);
+    // }
 
-      int actualId = newClient.GetId();
+    // [TestMethod]
+    // public void GetStylist_ReturnsStylist_String()
+    // {
+    //   string expectedStylist = "Tanvi";
+    //   Client newClient = new Client("Vicky", expectedStylist, 1, 1);
+    //
+    //   string actualStylist = newClient.GetStylist();
+    //
+    //   Assert.AreEqual(expectedStylist, actualStylist);
+    // }
 
-      Assert.AreEqual(expectedId, actualId);
-    }
-
-    [TestMethod]
-    public void GetName_ReturnsName_String()
-    {
-      string expectedName = "Vicky";
-      Client newClient = new Client(expectedName, "Tanvi", 1, 1);
-
-      string actualName = newClient.GetName();
-
-      Assert.AreEqual(expectedName, actualName);
-    }
-
-    [TestMethod]
-    public void GetStylist_ReturnsStylist_String()
-    {
-      string expectedStylist = "Tanvi";
-      Client newClient = new Client("Vicky", expectedStylist, 1, 1);
-
-      string actualStylist = newClient.GetStylist();
-
-      Assert.AreEqual(expectedStylist, actualStylist);
-    }
-
-    [TestMethod]
-    public void GetStylistId_ReturnsId_Int()
-    {
-      int expectedStylistId = 1;
-      Client newClient = new Client("Vicky", "Tanvi",expectedStylistId, 1);
-
-      int actualStylistId = newClient.GetStylistId();
-
-      Assert.AreEqual(expectedStylistId, actualStylistId);
-    }
-
-    [TestMethod]
-    public void GetAll_ReturnsEmptyList_ItemList()
-    {
-      //Arrange
-      List<Client> expectedClientList = new List<Client> { };
-
-      //Act
-      List<Client> actualClientList = Client.GetAll();
-
-      //Assert
-      CollectionAssert.AreEqual(expectedClientList, actualClientList);
-    }
+    // [TestMethod]
+    // public void GetStylistId_ReturnsId_Int()
+    // {
+    //   int expectedStylistId = 1;
+    //   Client newClient = new Client("Vicky", "Tanvi",expectedStylistId, 1);
+    //
+    //   int actualStylistId = newClient.GetStylistId();
+    //
+    //   Assert.AreEqual(expectedStylistId, actualStylistId);
+    // }
+    //
+    // [TestMethod]
+    // public void GetAll_ReturnsEmptyList_ItemList()
+    // {
+    //   //Arrange
+    //   List<Client> expectedClientList = new List<Client> { };
+    //
+    //   //Act
+    //   List<Client> actualClientList = Client.GetAll();
+    //
+    //   //Assert
+    //   CollectionAssert.AreEqual(expectedClientList, actualClientList);
+    // }
 
     // [TestMethod]
     // public void Save_SavesToDatabase_ClientList()
