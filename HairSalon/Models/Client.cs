@@ -65,64 +65,84 @@ namespace HairSalon.Models
       return allClients;
     }
 
-      public override bool Equals(System.Object otherClient)
+    //   public override bool Equals(System.Object otherClient)
+    // {
+    //   if (!(otherClient is Client))
+    //   {
+    //     return false;
+    //   }
+    //   else
+    //   {
+    //     Client newClient = (Client) otherClient;
+    //     bool idEquality = (this.GetId() == newClient.GetId());
+    //     bool nameEquality = (this.GetName() == newClient.GetName());
+    //     bool stylistEquality = (this.GetStylist() == newClient.GetStylist());
+    //     bool stylistIdEquality = this.GetStylistId() == newClient.GetStylistId();
+    //     return (idEquality && nameEquality && stylistEquality && stylistIdEquality);
+    //     //fail the Equals test by not adding the Equals method
+    //   }
+    // }
+   //*****Not on the to do list ******
+    // public void Save()
+    // {
+    //   MySqlConnection conn = DB.Connection();
+    //   conn.Open();
+    //   MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+    //   cmd.CommandText = @"INSERT INTO client (name, stylist, client_id) VALUES (@ClientName, @ClientStylist, @StylistId);";
+    //
+    //   MySqlParameter clientName = new MySqlParameter();
+    //   clientName.ParameterName = "@ClientName";
+    //   clientName.Value = this._name;
+    //   cmd.Parameters.Add(clientName);
+    //
+    //   MySqlParameter clientStylist = new MySqlParameter();
+    //   clientStylist.ParameterName = "@ClientStylist";
+    //   clientStylist.Value = this._stylist;
+    //   cmd.Parameters.Add(clientStylist);
+    //
+    //   MySqlParameter stylistId = new MySqlParameter();
+    //   stylistId.ParameterName = "@StylistId";
+    //   stylistId.Value = this._stylistId;
+    //   cmd.Parameters.Add(stylistId);
+    //
+    //   //Add this command for above 3 lines of code
+    //   cmd.Parameters.AddWithValue("@ClientName", this._name);
+    //   cmd.Parameters.AddWithValue("@ClientStylist", this._stylist);
+    //   cmd.Parameters.AddWithValue("@StylistId", this._stylistId);
+    //   cmd.ExecuteNonQuery();
+    //   _id = (int) cmd.LastInsertedId;
+    //
+    //   conn.Close();
+    //   if (conn != null)
+    //   {
+    //     conn.Dispose();
+    //   }
+    //   // To fail Saves to database method - declare method and keep it empty
+    //   // To fail Save AssignsId test -
+    //   // do not add the "_id = (int) cmd.LastInsertedId;" line
+    // }
+   // *****Not in to do list
+
+   public static void ClearAll()
+   {
+     MySqlConnection conn = DB.Connection();
+     conn.Open();
+     var cmd = conn.CreateCommand() as MySqlCommand;
+     cmd.CommandText = @"DELETE FROM clients;";
+     cmd.ExecuteNonQuery();
+     conn.Close();
+     if (conn != null)
+     {
+      conn.Dispose();
+     }
+   }
+
+   public static Client Find(int searchId)
     {
-      if (!(otherClient is Client))
-      {
-        return false;
-      }
-      else
-      {
-        Client newClient = (Client) otherClient;
-        bool idEquality = (this.GetId() == newClient.GetId());
-        bool nameEquality = (this.GetName() == newClient.GetName());
-        bool stylistEquality = (this.GetStylist() == newClient.GetStylist());
-        bool stylistIdEquality = this.GetStylistId() == newClient.GetStylistId();
-        return (idEquality && nameEquality && stylistEquality && stylistIdEquality);
-        //fail the Equals test by not adding the Equals method
-      }
+      // Temporarily returning dummy item to get beyond compiler errors, until we refactor to work with database.
+      Client dummyClient = new Client("dummy client");
+      return dummyClient;
     }
-
-    public void Save()
-    {
-      MySqlConnection conn = DB.Connection();
-      conn.Open();
-      MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"INSERT INTO client (name, stylist, client_id) VALUES (@ClientName, @ClientStylist, @StylistId);";
-
-      MySqlParameter clientName = new MySqlParameter();
-      clientName.ParameterName = "@ClientName";
-      clientName.Value = this._name;
-      cmd.Parameters.Add(clientName);
-
-      MySqlParameter clientStylist = new MySqlParameter();
-      clientStylist.ParameterName = "@ClientStylist";
-      clientStylist.Value = this._stylist;
-      cmd.Parameters.Add(clientStylist);
-
-      MySqlParameter stylistId = new MySqlParameter();
-      stylistId.ParameterName = "@StylistId";
-      stylistId.Value = this._stylistId;
-      cmd.Parameters.Add(stylistId);
-
-      //Add this command for above 3 lines of code
-      cmd.Parameters.AddWithValue("@ClientName", this._name);
-      cmd.Parameters.AddWithValue("@ClientStylist", this._stylist);
-      cmd.Parameters.AddWithValue("@StylistId", this._stylistId);
-      cmd.ExecuteNonQuery();
-      _id = (int) cmd.LastInsertedId;
-
-      conn.Close();
-      if (conn != null)
-      {
-        conn.Dispose();
-      }
-      // To fail Saves to database method - declare method and keep it empty
-      // To fail Save AssignsId test -
-      // do not add the "_id = (int) cmd.LastInsertedId;" line
-    }
-
-
 
 
   }
