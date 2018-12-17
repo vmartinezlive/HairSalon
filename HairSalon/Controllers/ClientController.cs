@@ -1,41 +1,35 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using HairSalon.Controllers;
 using HairSalon.Models;
+using System.Collections.Generic;
 
-namespace HairSalon.Tests
+namespace HairSalon.Controllers
 {
-    [TestClass]
-    public class ClientControllerTest
+  public class ClientController : Controller
+  {
+
+    [HttpGet("/stylist/{stylistId}/client/new")]
+    public ActionResult New(int stylistId)
     {
-
-      [TestMethod]
-      public void Create_ReturnsCorrectActionType_RedirectToActionResult()
-      {
-        //Arrange
-        ClientController controller = new ClientController();
-
-        //Act
-        IActionResult view = controller.Create("Cut hair");
-
-        //Assert
-        Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
-      }
-
-      [TestMethod]
-      public void Create_RedirectsToCorrectAction_Index()
-      {
-        //Arrange
-        ClientsController controller = new ClientsController();
-        RedirectToActionResult actionResult = controller.Create("Cut hair") as RedirectToActionResult;
-
-        //Act
-        string result = actionResult.ActionName;
-
-        //Assert
-        Assert.AreEqual(result, "Index");
-      }
-
+      Stylist stylist = Stylist.Find(stylistId);
+      return View(stylist);
     }
+
+    [HttpGet("/stylist/{stylistId}/client/{clientId}")]
+    public ActionResult Show(int stylistId, int clientId)
+    {
+      Client client = Client.Find(clientId);
+      Dictionary<string, object> model = new Dictionary<string, object>();
+      Category category = Category.Find(categoryId);
+      model.Add("client", client);
+      model.Add("stylist", stylist);
+      return View(model);
+    }
+
+    [HttpPost("/client/delete")]
+    public ActionResult DeleteAll()
+    {
+      client.ClearAll();
+      return View();
+    }
+  }
 }
