@@ -10,7 +10,7 @@ namespace HairSalon.Models
     private string _name;
     private string _stylist;
     private List<Client> _instance = new List<Client> {};
-    private description
+    private description;
     private int _stylistId;
 
 
@@ -175,7 +175,6 @@ namespace HairSalon.Models
           conn.Dispose();
         }
       }
-
-
     }
   }
+}
