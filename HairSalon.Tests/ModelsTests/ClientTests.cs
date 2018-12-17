@@ -71,7 +71,7 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void GetAll_ReturnsEmptyList_ItemList()
+    public void GetAll_ReturnsEmptyList_ClientList()
     {
       //Arrange
       List<Client> expectedClientList = new List<Client> { };
@@ -114,6 +114,22 @@ namespace HairSalon.Tests
     //Assert
     CollectionAssert.AreEqual(expectedClientList, actualClientList);
   }
+
+  [TestMethod]
+    public void Find_ReturnsCorrectClient_Client()
+    {
+      //Arrange
+      string client01 = "Beth";
+      string client02 = "Grace";
+      Client newClient1 = new Client(client01);
+      Client newClient2 = new Client(client02);
+    
+      //Act
+      Client result = Client.Find(2);
+
+      //Assert
+      Assert.AreEqual(newClient2, result);
+    }
 
 
  }

@@ -1,32 +1,41 @@
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Microsoft.AspNetCore.Mvc;
-using HairSalon.Models;
 using System.Collections.Generic;
-using System;
+using HairSalon.Controllers;
+using HairSalon.Models;
 
-namespace HairSalon.Controllers
+namespace HairSalon.Tests
 {
-  public class ClientController : Controller
-  {
-
-    [HttpGet("/client")]
-    public ActionResult Index()
+    [TestClass]
+    public class ClientControllerTest
     {
-      List<Client> allClients = Client.GetAll();
-      return View(allClients);
-    }
-    //
-    // [HttpGet("/clients/new")]
-    // public ActionResult New()
-    // {
-    //   return View();
-    // }
-    //
-    // [HttpPost("/clients")]
-    // public ActionResult Create(string clientName)
-    // {
-    //   Client myClient = new Client(clientName);
-    //   return RedirectToAction("Client");
-    // }
 
-  }
+      [TestMethod]
+      public void Create_ReturnsCorrectActionType_RedirectToActionResult()
+      {
+        //Arrange
+        ClientController controller = new ClientController();
+
+        //Act
+        IActionResult view = controller.Create("Cut hair");
+
+        //Assert
+        Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+      }
+
+      [TestMethod]
+      public void Create_RedirectsToCorrectAction_Index()
+      {
+        //Arrange
+        ClientsController controller = new ClientsController();
+        RedirectToActionResult actionResult = controller.Create("Cut hair") as RedirectToActionResult;
+
+        //Act
+        string result = actionResult.ActionName;
+
+        //Assert
+        Assert.AreEqual(result, "Index");
+      }
+
+    }
 }
