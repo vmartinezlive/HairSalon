@@ -205,6 +205,23 @@ public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Item()
   Assert.AreEqual(firstClient, secondClient);
 }
 
+[TestMethod]
+public void Save_AssignsIdToObject_Id()
+{
+  //Arrange
+  Client testClient = new Client("Wash hair");
+
+  //Act
+  testClient.Save();
+  Client savedClient = Client.GetAll()[0];
+
+  int result = savedClient.GetId();
+  int testId = testClient.GetId();
+
+  //Assert
+  Assert.AreEqual(testId, result);
+}
+
 
  }
 }

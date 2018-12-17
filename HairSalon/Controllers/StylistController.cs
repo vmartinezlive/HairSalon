@@ -1,11 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using HairSalon.Models;
+using System;
 
 namespace HairSalon.Controllers
 {
   public class StylistController : Controller
   {
+    [HttpGet("/stylists")]
+    public ActionResult Index()
+    {
+      List<Stylist> allStylists = Stylist.GetAll();
+      return View(allStylists);
+    }
+
+    [HttpGet("/stylists/new")]
+   public ActionResult New()
+   {
+     return View();
+   }
+
+   [HttpPost("/stylists")]
+   public ActionResult Create(string stylistName)
+   {
+     Stylist newStylist = new Stylist(stylistName);
+     List<Stylist> allStylists = Stylist.GetAll();
+     return View("Index", allStylists);
+   }
+
 
     [HttpGet("/stylists/{stylistyId}/clients/new")]
     public ActionResult New(int stylistId)

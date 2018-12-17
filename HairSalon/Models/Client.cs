@@ -10,15 +10,28 @@ namespace HairSalon.Models
     private string _name;
     private string _stylist;
     private List<Client> _instance = new List<Client> {};
+    private description
     private int _stylistId;
 
-    public Client(string name, string stylist, int stylistId, int id = 0)
+
+    public Client(string name, string stylist, int stylistId, string description, int id = 0)
     {
       _id = -instances.Count;
       _name = name;
       _stylist = stylist;
+      _description = description;
       _instances.Add(this);
       _stylistId = stylistId;
+    }
+
+    public string GetDescription()
+    {
+      return _description;
+    }
+
+    public void SetDescription(string newDescription)
+    {
+      _description = newDescription;
     }
 
     public int GetId()
@@ -31,25 +44,16 @@ namespace HairSalon.Models
       return "Vicky";
     }
 
-    public static List<Client> GetAll()
-   {
-     return _instances;
-   }
 
     public int GetStylistId()
     {
       return 1;
     }
 
-    public static void ClearAll()
-    {
-      _instances.Clear();
-    }
-
     public static Client Find(int searchId)
-   {
-     return _instances[searchId-1];
-   }
+    {
+      return _instances[searchId-1];
+    }
 
     public static List<Client> GetAll()
     {
@@ -64,10 +68,12 @@ namespace HairSalon.Models
         int clienttId = rdr.GetInt32(0);
         string clientName = rdr.GetString(1);
         string clientStylist = rdr.GetString(2);
+        string clientDescription = rdr.GetString(3);
         int stylistId = rdr.GetInt32(3);
-        Client newClient = new Client(clientId, clientName, clientStylist, stylistId);
+        Client newClient = new Client(clientId, clientName, clientStylist, clientDescription, stylistId);
         allclient.Add(newClient);
       }
+
       conn.Close();
       if (conn != null)
       {
@@ -76,7 +82,34 @@ namespace HairSalon.Models
       return allClients;
     }
 
-      public override bool Equals(System.Object otherClient)
+    public static Client Find(int id)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"SELECT * FROM `client` WHERE id = @thisId;";
+      MySqlParameter thisId = new MySqlParameter();
+      thisId.ParameterName = "@thisId";
+      thisId.Value = id;
+      cmd.Parameters.Add(thisId);
+      var rdr = cmd.ExecuteReader() as MySqlDataReader;
+      int clientId = 0;
+      string clientDescription = "";
+      while (rdr.Read())
+      {
+        clientId = rdr.GetInt32(0);
+        clientDescription = rdr.GetString(1);
+      }
+      Client foundClient= new Client(clientDescription, clientId);
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+      return foundClient;
+    }
+
+    public override bool Equals(System.Object otherClient)
     {
       if (!(otherClient is Client))
       {
@@ -127,33 +160,22 @@ namespace HairSalon.Models
       {
         conn.Dispose();
       }
-    //   // To fail Saves to database method - declare method and keep it empty
-    //   // To fail Save AssignsId test -
-    //   // do not add the "_id = (int) cmd.LastInsertedId;" line
-    // }
-   // *****Not in to do list
-
-   public static void ClearAll()
-   {
-     MySqlConnection conn = DB.Connection();
-     conn.Open();
-     var cmd = conn.CreateCommand() as MySqlCommand;
-     cmd.CommandText = @"DELETE FROM clients;";
-     cmd.ExecuteNonQuery();
-     conn.Close();
-     if (conn != null)
-     {
-      conn.Dispose();
-     }
-   }
-
-   // public static Client Find(int searchId)
-   //  {
-   //    // Temporarily returning dummy item to get beyond compiler errors, until we refactor to work with database.
-   //    Client dummyClient = new Client("dummy client");
-   //    return dummyClient;
-   //  }
 
 
+      public static void ClearAll()
+      {
+        MySqlConnection conn = DB.Connection();
+        conn.Open();
+        var cmd = conn.CreateCommand() as MySqlCommand;
+        cmd.CommandText = @"DELETE FROM clients;";
+        cmd.ExecuteNonQuery();
+        conn.Close();
+        if (conn != null)
+        {
+          conn.Dispose();
+        }
+      }
+
+
+    }
   }
-}
