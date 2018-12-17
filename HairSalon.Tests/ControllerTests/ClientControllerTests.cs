@@ -1,18 +1,41 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MySql.Data.MySqlClient;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
-using System;
+using HairSalon.Controllers;
 using HairSalon.Models;
 
-namespace ClientTest.Tests
+namespace HairSalon.Tests
 {
   [TestClass]
-  public class ClientTest : IDisposable
+  public class ClientControllerTest
   {
-    public void Dispose()
-    {
-        // Client.ClearAll();
-    }
+
+    // [TestMethod]
+     // public void Create_ReturnsCorrectActionType_RedirectToActionResult()
+     // {
+     //   //Arrange
+     //   ClientController controller = new ClientController();
+     //
+     //   //Act
+     //   IActionResult view = controller.Create("Cut a hair");
+     //
+     //   //Assert
+     //   Assert.IsInstanceOfType(view, typeof(RedirectToActionResult));
+     // }
+     //
+     // [TestMethod]
+     // public void Create_RedirectsToCorrectAction_Index()
+     // {
+     //   //Arrange
+     //   ClientController controller = new ClientController();
+     //   RedirectToActionResult actionResult = controller.Create("Walk the dog") as RedirectToActionResult;
+     //
+     //   //Act
+     //   string result = actionResult.ActionName;
+     //
+     //   //Assert
+     //   Assert.AreEqual(result, "Index");
+     // }
 
   }
 }

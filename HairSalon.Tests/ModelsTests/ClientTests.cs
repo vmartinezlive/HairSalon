@@ -26,6 +26,36 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
+    public void GetDescription_ReturnsDescription_String()
+    {
+      //Arrange
+      string description = "Cut hair.";
+      Client newClient = new Client(description);
+
+      //Act
+      string result = newClient.GetDescription();
+
+      //Assert
+      Assert.AreEqual(description, result);
+    }
+
+    [TestMethod]
+    public void SetDescription_SetDescription_String()
+    {
+      //Arrange
+      string description = "Cut hair.";
+      Client newClient = new Client(description);
+
+      //Act
+      string updatedDescription = "Wash hair";
+      newClient.SetDescription(updatedDescription);
+      string result = newClient.GetDescription();
+
+      //Assert
+      Assert.AreEqual(updatedDescription, result);
+    }
+
+    [TestMethod]
     public void GetId_ReturnsId_Int()
     {
       int expectedId = 1;
@@ -60,6 +90,38 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
+    public void GetAll_ReturnsEmptyList_ClientList()
+    {
+      //Arrange
+      List<Client> expectedClientList = new List<Client> { };
+
+      //Act
+      List<Client> actualClientList = Client.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(expectedClientList, actualClientList);
+    }
+
+    [TestMethod]
+ public void GetAll_ReturnsClient_ClientList()
+ {
+   //Arrange
+   string description01 = "Wash hair";
+   string description02 = "Cut hair";
+   Client newClient1 = new Client(description01);
+  newClient1.Save();
+   Client newClient2 = new Client(description02);
+   newClient2.Save();
+   List<Client> newList = new List<Client> { newClient1, newClient2 };
+
+   //Act
+   List<Client> result = Client.GetAll();
+
+   //Assert
+   CollectionAssert.AreEqual(newList, result);
+ }
+
+    [TestMethod]
     public void GetStylistId_ReturnsId_Int()
     {
       int expectedStylistId = 1;
@@ -71,16 +133,17 @@ namespace HairSalon.Tests
     }
 
     [TestMethod]
-    public void GetAll_ReturnsEmptyList_ClientList()
+    public void GetId_CLientsInstantiateWithAnIdAndGetterReturns_Int()
     {
       //Arrange
-      List<Client> expectedClientList = new List<Client> { };
+      string description = "Cut hair.";
+      Client newClient = new Client(description);
 
       //Act
-      List<Client> actualClientList = Client.GetAll();
+      int result = newClient.GetId();
 
       //Assert
-      CollectionAssert.AreEqual(expectedClientList, actualClientList);
+      Assert.AreEqual(1, result);
     }
 
     [TestMethod]
@@ -130,6 +193,17 @@ namespace HairSalon.Tests
       //Assert
       Assert.AreEqual(newClient2, result);
     }
+
+    [TestMethod]
+public void Equals_ReturnsTrueIfDescriptionsAreTheSame_Item()
+{
+  // Arrange, Act
+  Client firstClient = new Client("Wash hair");
+  Client secondClient = new Client("Wash hair");
+
+  // Assert
+  Assert.AreEqual(firstClient, secondClient);
+}
 
 
  }
