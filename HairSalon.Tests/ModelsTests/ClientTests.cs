@@ -1,5 +1,4 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-// using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System;
 using HairSalon.Models;
@@ -14,10 +13,10 @@ namespace HairSalon.Tests
         Client.ClearAll();
     }
 
-    public ClientTest()
-    {
-      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vicky_martinez_test;";
-    }
+    // public ClientTest()
+    // {
+    //   DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vicky_martinez_test;";
+    // }
 
     [TestMethod]
     public void ClientConstructor_CreatesInstanceOfClient_Client()
@@ -48,6 +47,7 @@ namespace HairSalon.Tests
       Assert.AreEqual(expectedName, actualName);
     }
 
+    
     [TestMethod]
     public void GetStylist_ReturnsStylist_String()
     {
@@ -123,7 +123,7 @@ namespace HairSalon.Tests
       string client02 = "Grace";
       Client newClient1 = new Client(client01);
       Client newClient2 = new Client(client02);
-    
+
       //Act
       Client result = Client.Find(2);
 
