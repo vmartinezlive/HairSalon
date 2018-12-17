@@ -13,10 +13,10 @@ namespace HairSalon.Tests
         Client.ClearAll();
     }
 
-    // public ClientTest()
-    // {
-    //   DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vicky_martinez_test;";
-    // }
+    public ClientTest()
+    {
+      DBConfiguration.ConnectionString = "server=localhost;user id=root;password=root;port=8889;database=vicky_martinez_test;";
+    }
 
     [TestMethod]
     public void ClientConstructor_CreatesInstanceOfClient_Client()
@@ -47,7 +47,7 @@ namespace HairSalon.Tests
       Assert.AreEqual(expectedName, actualName);
     }
 
-    
+
     [TestMethod]
     public void GetStylist_ReturnsStylist_String()
     {
